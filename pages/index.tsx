@@ -32,6 +32,20 @@ const Home: NextPage = () => {
         fetchImages();
     } , []);
 
+    useEffect(() => {
+        const fetchImages = async () => {
+            setIsLoading(true);
+            const response = await axios.get("https://api.unsplash.com/photos/", config);
+            console.log(response)
+            await setImages(response.data);
+            setTimeout(() => {
+                setIsLoading(false);
+            },1000)
+        }
+        fetchImages();
+    } , [searchWord]);
+
+
   return (
     <div className={classes.container}>
         {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : <ImageGrid images={images} />}

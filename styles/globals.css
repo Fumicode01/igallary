@@ -29,6 +29,11 @@ a {
     text-decoration: none;
   }
 
+  body{
+      max-width: 1080px;
+      margin: 0 auto;
+  }
+
   .loading{
       padding-top: 200px;
       margin: auto;
