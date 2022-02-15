@@ -7,7 +7,7 @@ const Header = () => {
   return (
       <nav>
             <div className={classes.nav_wrapper}>
-                <a href="#" className={classes.logo}>Logo</a>
+                <a href="/" className={classes.logo}>Logo</a>
                 <div className={classes.header_right_container}>
                     <ul className={classes.list_container}>
                         <li>

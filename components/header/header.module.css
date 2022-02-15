@@ -7,7 +7,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: rgb(199, 231, 236);
+    /* background: rgb(199, 231, 236); */
 }
 
 .logo{
@@ -19,10 +19,11 @@
     display: flex;
     width: 20vw;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-end;
 }
 
 .list_container li {
+    margin: 0 20px;
     list-style: none;
 }
 

@@ -1,9 +1,9 @@
-import axios from 'axios'
-import type { NextPage } from 'next'
 import React, { useState, useEffect } from 'react'
-import Header from '../components/header/Header'
+import type { NextPage } from 'next'
+import axios from 'axios'
+import BoxLoading from 'react-loading';
 import ImageGrid from '../components/imageGrid/ImageGird'
-import styles from '../styles/Home.module.css'
+import classes from '../styles/Home.module.css'
 
 const config = {
     headers: {
@@ -15,21 +15,27 @@ const config = {
 const Home: NextPage = () => {
     const [images, setImages] = useState([]);
     const [searchWord, setSearchWord] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
 
     useEffect(() => {
         const fetchImages = async () => {
+            setIsLoading(true);
             const response = await axios.get("https://api.unsplash.com/photos/", config);
             console.log(response)
-            setImages(response.data);
+            await setImages(response.data);
+            setTimeout(() => {
+                setIsLoading(false);
+            },1000)
+            // setIsLoading(false);
         }
         fetchImages();
-    } , [searchWord]);
+    } , []);
 
   return (
-    <div className={styles.container}>
-        <Header />
-        <ImageGrid images={images}/>
+    <div className={classes.container}>
+        {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : <ImageGrid images={images} />}
+        {/* <ImageGrid images={images}/> */}
     </div>
   )
 }
