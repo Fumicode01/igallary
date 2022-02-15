@@ -1,0 +1,31 @@
+.nav_wrapper{
+    max-width: 1080px;
+    height: 50px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(199, 231, 236);
+}
+
+.logo{
+    color: #efb6b2;
+    font-size: 1.5em;
+}
+
+.list_container{
+    display: flex;
+    width: 20vw;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.list_container li {
+    list-style: none;
+}
+
+.link_text{
+    font-size: 1.5rem;
+}
