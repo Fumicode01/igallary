@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect, useContext, useRef } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
 import BoxLoading from 'react-loading';
+import classes from '../styles/Home.module.css'
+
 
 import Modal from '../components/modal/Modal';
 import ImageGrid from '../components/imageGrid/ImageGird'
-import classes from '../styles/Home.module.css'
+import { configContext } from '../context/context';
 
 const config = {
     headers: {
@@ -16,10 +18,12 @@ const config = {
 
 const Home: NextPage = () => {
     const [images, setImages] = useState([]);
-    const [searchWord, setSearchWord] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const firstUpdate = useRef(true);
 
+    const { state } = useContext(configContext);
+    const searchWord = state.searchWord;
 
     useEffect(() => {
         const fetchImages = async () => {
@@ -30,24 +34,26 @@ const Home: NextPage = () => {
             setTimeout(() => {
                 setIsLoading(false);
             },1000)
-            // setIsLoading(false);
         }
         fetchImages();
     } , []);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
+        if(firstUpdate.current){
+            firstUpdate.current = false;
+            return
+        }
         const fetchImages = async () => {
             setIsLoading(true);
-            const response = await axios.get("https://api.unsplash.com/photos/", config);
+            const response = await axios.get(`https://api.unsplash.com/search/photos?page=1&query=${searchWord}`, config);
             console.log(response)
-            await setImages(response.data);
+            await setImages(response.data.results);
             setTimeout(() => {
                 setIsLoading(false);
             },1000)
         }
         fetchImages();
     } , [searchWord]);
-
 
   return (
     <div className={classes.container}>
