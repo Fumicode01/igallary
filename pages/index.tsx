@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
 import BoxLoading from 'react-loading';
+
+import Modal from '../components/modal/Modal';
 import ImageGrid from '../components/imageGrid/ImageGird'
 import classes from '../styles/Home.module.css'
 
@@ -16,6 +18,7 @@ const Home: NextPage = () => {
     const [images, setImages] = useState([]);
     const [searchWord, setSearchWord] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
 
 
     useEffect(() => {
@@ -48,8 +51,10 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.container}>
-        {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : <ImageGrid images={images} />}
-        {/* <ImageGrid images={images}/> */}
+        {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : <ImageGrid images={images} setSelectedImage={setSelectedImage} />}
+        { selectedImage && (
+        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+         )}
     </div>
   )
 }
