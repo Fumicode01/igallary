@@ -28,8 +28,13 @@ const Home: NextPage = () => {
     useEffect(() => {
         const fetchImages = async () => {
             setIsLoading(true);
-            const response = await axios.get("https://api.unsplash.com/photos/", config);
+            const response = await axios.get("https://api.unsplash.com/photos?page=1", config);
             console.log(response)
+            // console.log(response.headers.link.split(';')[1].split(",")[1]);
+            // console.log("MaxPage => " +response.headers.link.split(';')[2].split(",")[1].split("=")[1].split(">")[0]);
+            const maxItem = response.headers
+            console.log(maxItem)
+
             await setImages(response.data);
             setTimeout(() => {
                 setIsLoading(false);
@@ -46,7 +51,9 @@ const Home: NextPage = () => {
         const fetchImages = async () => {
             setIsLoading(true);
             const response = await axios.get(`https://api.unsplash.com/search/photos?page=1&query=${searchWord}`, config);
-            console.log(response)
+            console.log("response => ", response)
+            console.log("total Page => ", response.data.total_pages);
+
             await setImages(response.data.results);
             setTimeout(() => {
                 setIsLoading(false);
