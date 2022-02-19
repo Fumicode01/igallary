@@ -8,12 +8,15 @@ interface InputProviderProps {
 type AppState = typeof initialState;
 type Action = 
     | { type: "LOADING", payload: boolean }
-    | { type: "SEARCH", payload: string };
+    | { type: "SEARCH", payload: string }
+    // | { type: "TOTALPAGE", payload: number };
 
 
     const initialState = {
         isLoading: false,
         searchWord: "",
+        page:1,
+        // totalPages:0,
     }
 
 export const configContext = createContext<{
@@ -28,6 +31,8 @@ const configReducer = (state: AppState, action: Action) => {
             return {...state, isLoading: action.payload};
         case "SEARCH":
             return {...state, searchWord: action.payload};
+        // case "TOTALPAGE":
+        //     return {...state, totalPages: action.payload};
         default:
             return state
     }

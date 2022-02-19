@@ -10,6 +10,7 @@ import ImageGrid from '../components/imageGrid/ImageGird'
 
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
+import { Pagination } from '../components/pagination/Pagination';
 
 
 const config = {
@@ -20,22 +21,23 @@ const config = {
 
 const Home: NextPage = () => {
     const [images, setImages] = useState<Image[]>([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedImage, setSelectedImage] = useState<Image | null>(null);
     const firstUpdate = useRef(true);
 
-    const { state } = useContext(configContext);
+
+    const { state, dispatch } = useContext(configContext);
     const searchWord = state.searchWord;
 
     useEffect(() => {
         const fetchImages = async () => {
             setIsLoading(true);
-            const response = await axios.get("https://api.unsplash.com/photos?page=1&per_page=9", config);
-            console.log(response)
-            // console.log(response.headers.link.split(';')[1].split(",")[1]);
-            // console.log("MaxPage => " +response.headers.link.split(';')[2].split(",")[1].split("=")[1].split(">")[0]);
-            const maxItem = response.headers
-            console.log(maxItem)
+            const response = await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=9`, config);
+            const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
+            totalPages == 0 ? setTotalPages(Math.ceil(Number(maxItem) / 9)) : setTotalPages(totalPages);
+
 
             await setImages(response.data);
             setTimeout(() => {
@@ -43,7 +45,7 @@ const Home: NextPage = () => {
             },1000)
         }
         fetchImages();
-    } , []);
+    } , [page]);
 
     useLayoutEffect(() => {
         if(firstUpdate.current){
@@ -52,9 +54,10 @@ const Home: NextPage = () => {
         }
         const fetchImages = async () => {
             setIsLoading(true);
+            setPage(1)
             const response = await axios.get(`https://api.unsplash.com/search/photos?page=1&query=${searchWord}&per_page=9`, config);
-            console.log("response => ", response)
-            console.log("total Page => ", response.data.total_pages);
+            setTotalPages(response.data.total_pages);
+
 
             await setImages(response.data.results);
             setTimeout(() => {
@@ -64,9 +67,24 @@ const Home: NextPage = () => {
         fetchImages();
     } , [searchWord]);
 
+    const handlePages = (updatePage:number) => setPage(updatePage)
+
+
   return (
     <div className={classes.container}>
-        {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : <ImageGrid images={images} setSelectedImage={setSelectedImage} />}
+        {isLoading 
+            ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
+            : (
+                <>
+                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                    <Pagination 
+                        page={page}
+                        totalPages={totalPages}
+                        handlePagination={handlePages}
+
+                        />
+                </>
+                )}
         { selectedImage && (
         <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
          )}
