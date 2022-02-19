@@ -1,84 +1,81 @@
-
 .image_info_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-}
 
-.image_info_container li {
-  list-style: none;
-  margin: 10px;
-}
+  li {
+    list-style: none;
+    margin: 10px;
+  }
 
-.author_wrapper{
-    display: flex;
-    flex-direction:  column;
-    justify-content: center;
-    align-items: center;
-}
-
-.author_image{
-    border-radius: 25%;
-    margin: 3px;
-    width: 80px;
-    height: auto;
-}
-
-.author_wrapper p {
-    font-size: 25px;
-}
-
-.icon_wrapper{
+  .author_wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
 
-.icon_wrapper div{
+    p {
+      font-size: 25px;
+    }
+  }
+
+  .author_image {
+    border-radius: 25%;
+    margin: 3px;
+    width: 80px;
+    height: auto;
+  }
+
+  .icon_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  div {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.icon_wrapper p{
+  }
+  p {
     padding: 5px;
     font-size: 25px;
-}
+  }
 
-.twitter_icon{
-    color: #1DA1F2;
+  .twitter_icon {
+    color: #1da1f2;
     font-size: 30px;
     padding: 5px;
-}
+  }
 
-.instagram_icon{
-    color: #E1306C;
+  .instagram_icon {
+    color: #e1306c;
     font-size: 30px;
     padding: 5px;
-}
+  }
 
-.like_wrapper{
+  .like_wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
 
-.like_wrapper p {
-    font-size: 25px;
-}
+    p {
+      font-size: 25px;
+    }
+  }
 
-.heart_icon{
+  .heart_icon {
     color: #e99e98;
     font-size: 30px;
     padding: 0 5px 2px 0;
+  }
 }
 
-
-@media(max-width: 600px){
-    .image_info_container{
-        flex-direction: column;
-    }
+@media (max-width: 600px) {
+  .image_info_container {
+    flex-direction: column;
+  }
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 import { Image } from '../../interfaces/interfaces';
-import classes from './ImageGrid.module.css';
+import styles from './ImageGrid.module.scss';
 
 
 
@@ -14,9 +14,9 @@ interface Props {
 const ImageGrid = ({images, setSelectedImage}:Props) => {
 
   return (
-    <div className={classes.img_grid}>
+    <div className={styles.img_grid}>
       {images && images.map((image:any) => (
-        <motion.div className={classes.img_wrap} key={image.id} 
+        <motion.div className={styles.img_wrap} key={image.id} 
           layout
           whileHover={{ opacity: 1 }}
           onClick={() => setSelectedImage(image)}

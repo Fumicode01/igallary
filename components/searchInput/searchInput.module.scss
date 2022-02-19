@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:20px
-}
+    padding: 10px;
 
-.search_input_section input{
-    width: 300px;
-    height: 35px;
+    input {
+        width: 300px;
+        height: 35px;
+    }
+
 }

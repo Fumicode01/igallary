@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import classes from './modal.module.css';
+import styles from './modal.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -38,29 +38,29 @@ const Modal = ({ setSelectedImage, selectedImage }:any) => {
                 animate={{ y: 0 }}
                 className="modal_image"
             />
-            <ul className={classes.image_info_container}>
-                <li className={classes.author_wrapper}>
-                    <img className={classes.author_image} src={selectedImage.user.profile_image.medium} alt="author image" />
+            <ul className={styles.image_info_container}>
+                <li className={styles.author_wrapper}>
+                    <img className={styles.author_image} src={selectedImage.user.profile_image.medium} alt="author image" />
                     <p>{selectedImage.user.name}</p>
                 </li>
-                <li className={classes.icon_wrapper}>
+                <li className={styles.icon_wrapper}>
                     {selectedImage.user.social.twitter_username ? 
                     <div>
-                        <FontAwesomeIcon icon={faTwitterIcon} className={classes.twitter_icon}/>
+                        <FontAwesomeIcon icon={faTwitterIcon} className={styles.twitter_icon}/>
                         <p>{selectedImage.user.social.twitter_username}</p>
                     </div>
                     : null}
                     
                     {selectedImage.user.social.instagram_username ? 
                     <div>
-                        <FontAwesomeIcon icon={faInstagramIcon} className={classes.instagram_icon}/>
+                        <FontAwesomeIcon icon={faInstagramIcon} className={styles.instagram_icon}/>
                         <p>{selectedImage.user.social.instagram_username}</p>
                     </div>
                     : null}
                     
                 </li>
-                <li className={classes.like_wrapper}>
-                    <FontAwesomeIcon icon={faHeartIcon} className={classes.heart_icon}/>
+                <li className={styles.like_wrapper}>
+                    <FontAwesomeIcon icon={faHeartIcon} className={styles.heart_icon}/>
                     <p>{selectedImage.likes}</p>
                 </li>
             </ul>

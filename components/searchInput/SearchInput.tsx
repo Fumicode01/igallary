@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import classes from './searchInput.module.css'
+import styles from './searchInput.module.scss'
 
 import { configContext } from '../../context/context'
 
@@ -17,7 +17,7 @@ const SearchInput = () => {
     }
 
   return (
-        <section className={classes.search_input_section}>
+        <section className={styles.search_input_section}>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Search..." ref={input} />
             </form>
