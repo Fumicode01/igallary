@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+import { Image } from '../../interfaces/interfaces';
 import classes from './ImageGrid.module.css';
 
-interface Image{
-    id: string;
-    likes: number;
-    urls: object;
-    user: object;
-}
+
 
 interface Props {
     images: Image[];

@@ -8,7 +8,7 @@ const SearchInput = () => {
     const input = useRef<HTMLInputElement>(null)
     // const searchWord = state.searchWord;
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (input.current) {
             console.log(input.current.value)
@@ -18,7 +18,7 @@ const SearchInput = () => {
 
   return (
         <section className={classes.search_input_section}>
-            <form onSubmit={(e)=>handleSubmit(e)}>
+            <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Search..." ref={input} />
             </form>
         </section>
