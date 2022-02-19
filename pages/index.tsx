@@ -17,9 +17,9 @@ const config = {
 
 
 const Home: NextPage = () => {
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState<any | null>(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState<any | null>(null);
     const firstUpdate = useRef(true);
 
     const { state } = useContext(configContext);

@@ -3,7 +3,21 @@ import { motion } from 'framer-motion';
 
 import classes from './ImageGrid.module.css';
 
-const ImageGrid = ({images, setSelectedImage}:any) => {
+interface Image{
+    id: string;
+    likes: number;
+    urls: object;
+    user: object;
+}
+
+interface Props {
+    images: Image[];
+    setSelectedImage: (image: Image) => void;
+}
+
+const ImageGrid = ({images, setSelectedImage}:Props) => {
+
+    images?.map(image => console.log(image))
 
   return (
     <div className={classes.img_grid}>
