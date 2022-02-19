@@ -11,12 +11,12 @@ import ImageGrid from '../components/imageGrid/ImageGird'
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
 
+
 const config = {
     headers: {
-        Authorization: "Client-ID WRnSlOG7Pt-AbW-oKfIxhf3m666J129Op-xwOOq-Zh4",
+        Authorization: `Client-ID ${process.env.NEXT_PUBLIC_KEY}`,
     }
 }
-
 
 const Home: NextPage = () => {
     const [images, setImages] = useState<Image[]>([]);

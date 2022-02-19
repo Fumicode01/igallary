@@ -13,8 +13,6 @@ interface Props {
 
 const ImageGrid = ({images, setSelectedImage}:Props) => {
 
-    images?.map(image => console.log(image))
-
   return (
     <div className={classes.img_grid}>
       {images && images.map((image:any) => (
