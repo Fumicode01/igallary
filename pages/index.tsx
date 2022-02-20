@@ -11,6 +11,8 @@ import ImageGrid from '../components/imageGrid/ImageGird'
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
 import { Pagination } from '../components/pagination/Pagination';
+import ImageCard from '../components/imageCard/ImageCard';
+import ImageGallery from '../components/imageGallery/ImageGallery';
 
 
 const config = {
@@ -72,7 +74,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.container}>
-        {isLoading 
+        {/* {isLoading 
             ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
             : (
                 <>
@@ -87,7 +89,24 @@ const Home: NextPage = () => {
                 )}
         { selectedImage && (
         <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-         )}
+         )} */}
+
+{isLoading 
+            ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
+            : (
+                <>
+                    <ImageGallery images={images} setSelectedImage={setSelectedImage} />
+                    <Pagination 
+                        page={page}
+                        totalPages={totalPages}
+                        handlePagination={handlePages}
+
+                        />
+                </>
+                )}
+                { selectedImage && (
+        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+         )} 
     </div>
   )
 }
