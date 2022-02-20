@@ -55,7 +55,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.container}>
-        {/* {isLoading 
+        {isLoading 
             ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
             : (
                 <>
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
                         />
                 </>
                 )}
-        { selectedImage && (
+        {/* { selectedImage && (
         <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
          )} */}
 

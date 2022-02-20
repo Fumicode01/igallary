@@ -1,0 +1,110 @@
+.img_wrap {
+  overflow: hidden;
+  height: 0;
+  padding: 50% 0;
+  position: relative;
+  opacity: 0.8;
+
+  img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.card_back {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  height: 100%;
+  width: 100%;
+  // margin: 1rem;
+
+  .upper_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px 0;
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding: 5px;
+    }
+
+    .left_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+    }
+
+    .right_wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+
+      div {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .twitter_icon {
+        color: #1da1f2;
+        font-size: 35px;
+        padding: 5px;
+      }
+
+      .instagram_icon {
+        color: #e1306c;
+        font-size: 35px;
+        padding: 5px;
+      }
+    }
+  }
+
+  .lower_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    .heart_icon {
+      color: #e99e98;
+      font-size: 35px;
+      padding: 0 5px 2px 0;
+    }
+
+    p {
+      font-size: 1.5rem;
+      padding: 5px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .img_grid {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .img_grid {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+
+    .img_wrap img {
+      max-width: 400px;
+    }
+  }
+}

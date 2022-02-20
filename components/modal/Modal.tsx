@@ -3,20 +3,8 @@ import { motion } from 'framer-motion';
 import styles from './modal.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../icons/Icon';
 
-// interface props{
-//     selectedImage: string,
-//     setSelectdImage : (value: React.SetStateAction<string>) => void
-
-// }
-
-const faHeartIcon = faHeart as IconProp
-const faTwitterIcon = faTwitter as IconProp
-const faInstagramIcon = faInstagram as IconProp
 
 const Modal = ({ setSelectedImage, selectedImage }:any) => {
     console.log(selectedImage)

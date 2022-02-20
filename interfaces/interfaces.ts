@@ -3,4 +3,5 @@ export interface Image{
     likes: number;
     urls: object;
     user: object;
+    isFlipped: boolean;
 }
