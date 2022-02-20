@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
-import BoxLoading from 'react-loading';
 import classes from '../styles/Home.module.css'
 
+import BoxLoading from 'react-loading';
 import Modal from '../components/modal/Modal';
 import ImageGrid from '../components/imageGrid/ImageGird'
+import MainTitle from '../components/mainTitle/MainTitle'
+import SearchInput from '../components/searchInput/SearchInput'
 
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
@@ -56,60 +58,64 @@ const Home: NextPage = () => {
 
     if (isLoading)  return <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} />
   return (
-    <div className={classes.container}>
-        {/* <Toggle setViewChange={(e:any) => setViewChange(!e.target.checked)}  ref={viewRef} /> */}
-        <Toggle onClick={(e:any) => setViewChange(e.target.checked)}  />
+      <>
+        <MainTitle />
+        <SearchInput />
+        <div className={classes.container}>
+            {/* <Toggle setViewChange={(e:any) => setViewChange(!e.target.checked)}  ref={viewRef} /> */}
+            <Toggle onClick={(e:any) => setViewChange(e.target.checked)}  />
 
-        {/* {isLoading 
-            ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
-            : ({viewChange} ?
-                <>
-                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
-                    <Pagination 
-                        page={page}
-                        totalPages={totalPages}
-                        handlePagination={handlePages}
-                        />
-                </>
-               : <>
-               <ImageGallery images={images} setSelectedImage={setSelectedImage} />
-               <Pagination 
-                   page={page}
-                   totalPages={totalPages}
-                   handlePagination={handlePages}
-                   />
-               { selectedImage && (
-                   <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-               )} 
-           </> )} */}
-             {/* {isLoading 
-            ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
-            : (
-                
-                )} */}
-                {/* {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : (<></>)} */}
-                {!viewChange ? 
-                <>
-                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
-                    <Pagination 
-                        page={page}
-                        totalPages={totalPages}
-                        handlePagination={handlePages}
-                        />
-                </>  :
-                <>
-                    <ImageGallery images={images} setSelectedImage={setSelectedImage} />
-                    <Pagination 
-                        page={page}
-                        totalPages={totalPages}
-                        handlePagination={handlePages}
-                        />
-                    { selectedImage && (
-                        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-                    )} 
-                </>
-                }
-    </div>
+            {/* {isLoading 
+                ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
+                : ({viewChange} ?
+                    <>
+                        <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                        <Pagination 
+                            page={page}
+                            totalPages={totalPages}
+                            handlePagination={handlePages}
+                            />
+                    </>
+                : <>
+                <ImageGallery images={images} setSelectedImage={setSelectedImage} />
+                <Pagination 
+                    page={page}
+                    totalPages={totalPages}
+                    handlePagination={handlePages}
+                    />
+                { selectedImage && (
+                    <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                )} 
+            </> )} */}
+                {/* {isLoading 
+                ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
+                : (
+                    
+                    )} */}
+                    {/* {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : (<></>)} */}
+                    {!viewChange ? 
+                    <>
+                        <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                        <Pagination 
+                            page={page}
+                            totalPages={totalPages}
+                            handlePagination={handlePages}
+                            />
+                    </>  :
+                    <>
+                        <ImageGallery images={images} setSelectedImage={setSelectedImage} />
+                        <Pagination 
+                            page={page}
+                            totalPages={totalPages}
+                            handlePagination={handlePages}
+                            />
+                        { selectedImage && (
+                            <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                        )} 
+                    </>
+                    }
+        </div>
+      </>
   )
 }
 
