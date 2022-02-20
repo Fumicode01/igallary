@@ -33,11 +33,11 @@ const ImageFlip = ({ image }:any) => {
         {/* </div> */}
         <div className={styles.card_back} onClick={handleClick}>
             <div className={styles.upper_wrapper}>
-                    <div className={styles.left_wrapper}>
+                    {/* <div className={styles.left_wrapper}> */}
                         <img className={styles.author_image} src={image.user.profile_image.medium} alt="author image" />
                         <p>{image.user.name}</p>
-                    </div>
-                    <div className={styles.right_wrapper}>
+                    {/* </div> */}
+                    {/* <div className={styles.right_wrapper}> */}
                     {image.user.social.twitter_username ? 
                         <div>
                             <FontAwesomeIcon icon={faTwitterIcon} className={styles.twitter_icon}/>
@@ -51,7 +51,7 @@ const ImageFlip = ({ image }:any) => {
                             <p>{image.user.social.instagram_username}</p>
                         </div>
                         : null}
-                    </div>
+                    {/* </div> */}
                 </div>
             <div className={styles.lower_wrapper}>
                 <FontAwesomeIcon icon={faHeartIcon} className={styles.heart_icon}/>
