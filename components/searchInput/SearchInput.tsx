@@ -19,7 +19,11 @@ const SearchInput = () => {
   return (
         <section className={styles.search_input_section}>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Search..." ref={input} />
+                <div className={styles.container}>
+                    <input type="text" placeholder="Search..." ref={input} />
+                    <div className={styles.search}></div>
+                </div>
+                {/* <input type="text" placeholder="Search..." ref={input} /> */}
             </form>
         </section>
   )
