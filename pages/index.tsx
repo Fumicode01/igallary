@@ -4,7 +4,6 @@ import axios from 'axios'
 import BoxLoading from 'react-loading';
 import classes from '../styles/Home.module.css'
 
-
 import Modal from '../components/modal/Modal';
 import ImageGrid from '../components/imageGrid/ImageGird'
 
@@ -55,6 +54,7 @@ const Home: NextPage = () => {
     const handlePages = (updatePage:number) => setPage(updatePage)
 
 
+    if (isLoading)  return <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} />
   return (
     <div className={classes.container}>
         {/* <Toggle setViewChange={(e:any) => setViewChange(!e.target.checked)}  ref={viewRef} /> */}
