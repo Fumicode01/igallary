@@ -12,7 +12,6 @@ export const PaginationComponent: React.FC<Props> = ({
   totalPages,
   handlePagination,
 }) => {
-    console.log("page => ", page, "totalPage => ", totalPages);
   return (
     <div className={styles.pagination}>
       <div className={styles.paginationWrapper}>

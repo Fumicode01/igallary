@@ -1,14 +1,8 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
-import { urlToHttpOptions } from "url";
 
 function ImageGallery({ images, setSelectedImage}:any) {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
   const [modifiedImages, setModifiedImages] = useState<any[]>([]);
-
-  console.log(images)
 
   useEffect(()=>{
     images.map((image:any)=> {

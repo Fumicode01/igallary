@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
 import BoxLoading from 'react-loading';
@@ -11,8 +11,8 @@ import ImageGrid from '../components/imageGrid/ImageGird'
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
 import { Pagination } from '../components/pagination/Pagination';
-import ImageCard from '../components/imageCard/ImageCard';
 import ImageGallery from '../components/imageGallery/ImageGallery';
+import Toggle from '../components/toggle/Toggle';
 
 
 const config = {
@@ -27,6 +27,7 @@ const Home: NextPage = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedImage, setSelectedImage] = useState<Image | null>(null);
+    const [viewChange, setViewChange] = useState(false);
 
 
     const { state } = useContext(configContext);
@@ -34,6 +35,7 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         const fetchImages = async () => {
+            viewChange && setViewChange(false)
             setIsLoading(true);
             const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=9`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=9`, config);
             const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
@@ -55,39 +57,58 @@ const Home: NextPage = () => {
 
   return (
     <div className={classes.container}>
-        {isLoading 
+        {/* <Toggle setViewChange={(e:any) => setViewChange(!e.target.checked)}  ref={viewRef} /> */}
+        <Toggle onClick={(e:any) => setViewChange(e.target.checked)}  />
+
+        {/* {isLoading 
             ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
-            : (
+            : ({viewChange} ?
                 <>
                     <ImageGrid images={images} setSelectedImage={setSelectedImage} />
                     <Pagination 
                         page={page}
                         totalPages={totalPages}
                         handlePagination={handlePages}
-
                         />
                 </>
-                )}
-        {/* { selectedImage && (
-        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-         )} */}
-
-        {isLoading 
+               : <>
+               <ImageGallery images={images} setSelectedImage={setSelectedImage} />
+               <Pagination 
+                   page={page}
+                   totalPages={totalPages}
+                   handlePagination={handlePages}
+                   />
+               { selectedImage && (
+                   <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+               )} 
+           </> )} */}
+             {/* {isLoading 
             ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
             : (
+                
+                )} */}
+                {/* {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : (<></>)} */}
+                {!viewChange ? 
+                <>
+                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                    <Pagination 
+                        page={page}
+                        totalPages={totalPages}
+                        handlePagination={handlePages}
+                        />
+                </>  :
                 <>
                     <ImageGallery images={images} setSelectedImage={setSelectedImage} />
                     <Pagination 
                         page={page}
                         totalPages={totalPages}
                         handlePagination={handlePages}
-
                         />
+                    { selectedImage && (
+                        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                    )} 
                 </>
-                )}
-                { selectedImage && (
-             <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-         )} 
+                }
     </div>
   )
 }
