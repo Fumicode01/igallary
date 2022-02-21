@@ -47,6 +47,8 @@ const Home: NextPage = () => {
             },1000)
             console.log(response.data)
         }
+        console.log("before => ", viewChange)
+        localStorage.getItem("viewChange") === "true" ? setViewChange(true) : setViewChange(false);
         fetchImages();
     } , [page, searchWord]);
 
@@ -54,7 +56,13 @@ const Home: NextPage = () => {
         setPage(1);
     }, [searchWord])
 
+    useEffect(()=> {
+        localStorage.setItem("viewChange", viewChange.toString());
+    },[viewChange])
+
+
     const handlePages = (updatePage:number) => setPage(updatePage)
+    
 
 
     if (isLoading)  return <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} />
@@ -63,7 +71,7 @@ const Home: NextPage = () => {
         <MainTitle />
         <SearchInput />
         <div className={classes.container}>
-            <Toggle onClick={(e:any) => setViewChange(e.target.checked)}  />
+            <Toggle onClick={setViewChange} viewChange={viewChange}  />
                 {!viewChange ? 
                 <>
                     <ImageGrid images={images} setSelectedImage={setSelectedImage} />

@@ -1,8 +1,11 @@
 export interface Image{
     id: string;
     likes: number;
-    urls: object;
-    user: object;
+    urls: Url;
+    user: User;
+    width: number;
+    height: number;
+    size: string[];
 }
 
 export interface SocialLink {
