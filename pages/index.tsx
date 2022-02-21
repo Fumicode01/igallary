@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
-import classes from '../styles/Home.module.css'
+import {useQuery} from 'react-query';
+
+import styles from '../styles/Home.module.css'
 
 import BoxLoading from 'react-loading';
 import Modal from '../components/modal/Modal';
@@ -12,6 +14,7 @@ import SearchInput from '../components/searchInput/SearchInput'
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
 import { Pagination } from '../components/pagination/Pagination';
+import { fetchImages } from '../api/api'
 import ImageGallery from '../components/imageGallery/ImageGallery';
 import Toggle from '../components/toggle/Toggle';
 
@@ -27,6 +30,7 @@ const Home: NextPage = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(false);
     const [selectedImage, setSelectedImage] = useState<Image | null>(null);
     const [viewChange, setViewChange] = useState(false);
 
@@ -36,21 +40,37 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         const fetchImages = async () => {
-            viewChange && setViewChange(false)
             setIsLoading(true);
-            const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=9`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=9`, config);
-            const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
-            totalPages == 0 ? setTotalPages(Math.ceil(Number(maxItem) / 9)) : setTotalPages(totalPages);
-            searchWord ? setImages(response.data.results) : setImages(response.data);
-            setTimeout(() => {
-                setIsLoading(false);
-            },1000)
-            console.log(response.data)
-        }
+            setError(false)
+            try {
+                const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=9`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=9`, config)
+                const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
+                totalPages == 0 ? setTotalPages(Math.ceil(Number(maxItem) / 9)) : setTotalPages(totalPages);
+                searchWord ? setImages(response.data.results) : setImages(response.data);
+                setTimeout(() => {
+                    setIsLoading(false);
+                },1000)
+                console.log(response.data)
+            } catch (error) {
+                console.error(error)
+                setError(true);
+                setIsLoading(false)
+                return
+            }
+            
+            }
         console.log("before => ", viewChange)
         localStorage.getItem("viewChange") === "true" ? setViewChange(true) : setViewChange(false);
         fetchImages();
     } , [page, searchWord]);
+
+    // const { data, error, isLoading } = useQuery('images',  () => fetchImages({page, searchWord}));
+    // console.log(data)
+
+    // useEffect(() => {
+    //     const { data, error, isLoading } = useQuery('images',  () => fetchImages({page, searchWord}));
+    //     setImages(data)
+    // },[page, searchWord])
 
     useEffect(()=> {
         setPage(1);
@@ -70,7 +90,7 @@ const Home: NextPage = () => {
       <>
         <MainTitle />
         <SearchInput />
-        <div className={classes.container}>
+        {error ? <div className={styles.error}>Please check your word.</div> : <div className={styles.container}>
             <Toggle onClick={setViewChange} viewChange={viewChange}  />
                 {!viewChange ? 
                 <>
@@ -93,7 +113,8 @@ const Home: NextPage = () => {
                     )} 
                 </>
                 }
-        </div>
+        </div>}
+        
       </>
   )
 }

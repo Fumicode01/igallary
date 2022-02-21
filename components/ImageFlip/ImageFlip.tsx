@@ -13,7 +13,6 @@ interface Props{
 
 const ImageFlip  = ({image}:Props) => {
 
-    console.log("props image => ", image)
     const [isFlipped, changeFlip] = useState(false)
 
     const handleClick = useCallback((event) => {

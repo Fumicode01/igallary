@@ -4,18 +4,21 @@ import Header from '../header/Header'
 // import SearchInput from '../searchInput/SearchInput'
 import ConfigContextProvider from '../../context/context'
 import Head from 'next/head'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const Layout = (props:any) => {
+
+    const queryClient = new QueryClient()
   return (
       <ConfigContextProvider>
-        <Fragment>
-            <Head>
-                <title>My Gallary</title>
-                <link rel="shortcut icon" href="/logo.png" />
-            </Head>
-            <Header />
-            <main>{props.children}</main>
-        </Fragment>
+          <QueryClientProvider client={queryClient}>
+                <Head>
+                    <title>My Gallary</title>
+                    <link rel="shortcut icon" href="/logo.png" />
+                </Head>
+                <Header />
+                <main>{props.children}</main>
+          </QueryClientProvider>
       </ConfigContextProvider>
   )
 }
