@@ -14,7 +14,7 @@ function ImageGallery({ images, setSelectedImage}:Props) {
   const [modifiedImages, setModifiedImages] = useState<Array<ModifiedImage>>([]);
 
   useEffect(()=>{
-    images.map((image:any)=> {
+    images.map((image:Image)=> {
         let tempImage = {
             src: image.urls.small,
             width: image.width,
