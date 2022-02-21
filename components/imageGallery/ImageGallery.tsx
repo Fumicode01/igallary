@@ -1,31 +1,13 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Gallery from "react-photo-gallery";
 
-import { Image } from '../../interfaces/interfaces';
+import { Image, ModifiedImage } from '../../interfaces/interfaces';
 
 interface Props {
     images: Image[];
     setSelectedImage: (image: Image) => void;
 }
 
-interface User {
-    id: number;
-    name: string;
-}
-
-interface Url {
-    small: string;
-}
-
-interface ModifiedImage {
-    src: string,
-    width: number,
-    height: number,
-    urls: Url,
-    user: User,
-    likes: number
-    size:string[]
-}
 
 
 function ImageGallery({ images, setSelectedImage}:Props) {
