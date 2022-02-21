@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import styles from './modal.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../icons/Icon';
+import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../Icons';
 
 
-const Modal = ({ setSelectedImage, selectedImage }:any) => {
+ export const Modal = ({ setSelectedImage, selectedImage }:any) => {
     console.log(selectedImage)
 
   const handleClick = (e:any) => {
@@ -57,5 +57,3 @@ const Modal = ({ setSelectedImage, selectedImage }:any) => {
     </motion.div>
   )
 }
-
-export default Modal;

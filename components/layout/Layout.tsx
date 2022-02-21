@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react'
-import Header from '../header/Header'
-// import MainTitle from '../mainTitle/MainTitle'
-// import SearchInput from '../searchInput/SearchInput'
+import React from 'react'
+import { Header } from '../Header'
 import ConfigContextProvider from '../../context/context'
 import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const Layout = (props:any) => {
+export const Layout = (props:any) => {
 
     const queryClient = new QueryClient()
   return (
@@ -22,5 +20,3 @@ const Layout = (props:any) => {
       </ConfigContextProvider>
   )
 }
-
-export default Layout

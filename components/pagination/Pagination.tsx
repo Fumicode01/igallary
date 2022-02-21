@@ -7,7 +7,7 @@ export interface Props {
   totalPages: number;
   handlePagination: (page: number) => void;
 }
-export const PaginationComponent: React.FC<Props> = ({
+export const Pagination: React.FC<Props> = ({
   page,
   totalPages,
   handlePagination,
@@ -105,4 +105,3 @@ export const PaginationComponent: React.FC<Props> = ({
     </div>
   );
 };
-export const Pagination = PaginationComponent;

@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './mainTitle.module.scss'
 
-const MainTitle = () => {
+export const MainTitle = () => {
   return (
       <section className={classes.main_title_section}>
           <h1>My Gallary</h1>
@@ -9,5 +9,3 @@ const MainTitle = () => {
       </section>
   )
 }
-
-export default MainTitle

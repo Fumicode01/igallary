@@ -10,7 +10,7 @@ interface Props {
 
 
 
-function ImageGallery({ images, setSelectedImage}:Props) {
+export const ImageGallery = ({ images, setSelectedImage}:Props) => {
   const [modifiedImages, setModifiedImages] = useState<Array<ModifiedImage>>([]);
 
   useEffect(()=>{
@@ -38,5 +38,3 @@ function ImageGallery({ images, setSelectedImage}:Props) {
     </div>
   );
 }
-
-export default ImageGallery

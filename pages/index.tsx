@@ -1,22 +1,16 @@
-import React, { useState, useEffect, useContext, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import type { NextPage } from 'next'
 import axios from 'axios'
-import {useQuery} from 'react-query';
 
 import styles from '../styles/Home.module.css'
 
 import BoxLoading from 'react-loading';
-import Modal from '../components/modal/Modal';
-import ImageGrid from '../components/imageGrid/ImageGird'
-import MainTitle from '../components/mainTitle/MainTitle'
-import SearchInput from '../components/searchInput/SearchInput'
+import { Modal, Grid, ImageGallery, Pagination, Toggle, MainTitle, SearchInput } from '../components'
+
 
 import { Image } from '../interfaces/interfaces';
 import { configContext } from '../context/context';
-import { Pagination } from '../components/pagination/Pagination';
-import { fetchImages } from '../api/api'
-import ImageGallery from '../components/imageGallery/ImageGallery';
-import Toggle from '../components/toggle/Toggle';
+
 
 
 const config = {
@@ -64,14 +58,6 @@ const Home: NextPage = () => {
         fetchImages();
     } , [page, searchWord]);
 
-    // const { data, error, isLoading } = useQuery('images',  () => fetchImages({page, searchWord}));
-    // console.log(data)
-
-    // useEffect(() => {
-    //     const { data, error, isLoading } = useQuery('images',  () => fetchImages({page, searchWord}));
-    //     setImages(data)
-    // },[page, searchWord])
-
     useEffect(()=> {
         setPage(1);
     }, [searchWord])
@@ -80,12 +66,10 @@ const Home: NextPage = () => {
         localStorage.setItem("viewChange", viewChange.toString());
     },[viewChange])
 
-
     const handlePages = (updatePage:number) => setPage(updatePage)
-    
-
 
     if (isLoading)  return <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} />
+    
   return (
       <>
         <MainTitle />
@@ -94,7 +78,7 @@ const Home: NextPage = () => {
             <Toggle onClick={setViewChange} viewChange={viewChange}  />
                 {!viewChange ? 
                 <>
-                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                    <Grid images={images} setSelectedImage={setSelectedImage} />
                     <Pagination 
                         page={page}
                         totalPages={totalPages}

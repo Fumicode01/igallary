@@ -3,7 +3,7 @@ import styles from './searchInput.module.scss'
 
 import { configContext } from '../../context/context'
 
-const SearchInput = () => {
+export const SearchInput = () => {
     const { state, dispatch } = useContext(configContext);
     const input = useRef<HTMLInputElement>(null)
     // const searchWord = state.searchWord;
@@ -28,5 +28,3 @@ const SearchInput = () => {
         </section>
   )
 }
-
-export default SearchInput

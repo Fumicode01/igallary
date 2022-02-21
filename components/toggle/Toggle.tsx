@@ -7,7 +7,7 @@ interface Props {
     viewChange:boolean
 }
 
-const Toggle = ({onClick, viewChange}:Props) => {
+export const Toggle = ({onClick, viewChange}:Props) => {
     
   return (
       <label className={styles.wrapper}>
@@ -17,5 +17,3 @@ const Toggle = ({onClick, viewChange}:Props) => {
 
   )
 }
-
-export default Toggle

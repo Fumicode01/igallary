@@ -1,17 +1,14 @@
 import React from 'react';
+import styles from './ImageGrid.module.scss';
 
 import { Image } from '../../interfaces/interfaces';
-import styles from './ImageGrid.module.scss';
-import ImageFlip from '../ImageFlip/ImageFlip';
-
-
+import { ImageFlip } from '../ImageFlip';
 
 interface Props {
     images: Image[];
     setSelectedImage: (image: Image) => void;
 }
-
-const ImageGrid = ({ images }:Props) => {
+export const Grid = ({ images }:Props) => {
 
   return (
     <div className={styles.img_grid}>
@@ -21,5 +18,3 @@ const ImageGrid = ({ images }:Props) => {
     </div>
   )
 }
-
-export default ImageGrid;

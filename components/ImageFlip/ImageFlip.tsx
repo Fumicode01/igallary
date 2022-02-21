@@ -5,13 +5,13 @@ import styles from './imageFlip.module.scss'
 import { Image } from '../../interfaces/interfaces';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../icons/Icon';
+import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../Icons';
 
 interface Props{
     image: Image
 }
 
-const ImageFlip  = ({image}:Props) => {
+export const ImageFlip  = ({image}:Props) => {
 
     const [isFlipped, changeFlip] = useState(false)
 
@@ -66,5 +66,3 @@ const ImageFlip  = ({image}:Props) => {
     </ReactCardFlip>
   )
 }
-
-export default ImageFlip

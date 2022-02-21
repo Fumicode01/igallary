@@ -6,7 +6,7 @@ import logo from '../../public/logo.png'
 
 import styles from './header.module.scss'
 
-const Header = () => {
+export const Header = () => {
   return (
       <nav>
             <div className={styles.nav_wrapper}>
@@ -27,5 +27,3 @@ const Header = () => {
       </nav>
   )
 }
-
-export default Header
