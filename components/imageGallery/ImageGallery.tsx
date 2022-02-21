@@ -1,8 +1,35 @@
 import React, { useState, useCallback, useEffect } from "react";
 import Gallery from "react-photo-gallery";
 
-function ImageGallery({ images, setSelectedImage}:any) {
-  const [modifiedImages, setModifiedImages] = useState<any[]>([]);
+import { Image } from '../../interfaces/interfaces';
+
+interface Props {
+    images: Image[];
+    setSelectedImage: (image: Image) => void;
+}
+
+interface User {
+    id: number;
+    name: string;
+}
+
+interface Url {
+    small: string;
+}
+
+interface ModifiedImage {
+    src: string,
+    width: number,
+    height: number,
+    urls: Url,
+    user: User,
+    likes: number
+    size:string[]
+}
+
+
+function ImageGallery({ images, setSelectedImage}:Props) {
+  const [modifiedImages, setModifiedImages] = useState<Array<ModifiedImage>>([]);
 
   useEffect(()=>{
     images.map((image:any)=> {
@@ -14,7 +41,7 @@ function ImageGallery({ images, setSelectedImage}:any) {
             user: image.user,
             likes: image.likes
         }
-        setModifiedImages(modifiedImages => [...modifiedImages, tempImage])
+        setModifiedImages((modifiedImages:any) => [...modifiedImages, tempImage])
     })
   }, [])
 
