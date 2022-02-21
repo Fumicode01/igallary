@@ -53,21 +53,6 @@ function ImageGallery({ images, setSelectedImage}:Props) {
   return (
     <div>
       <Gallery photos={modifiedImages} onClick={selectImage} />
-      {/* <ModalGateway>
-        {viewerIsOpen ? (
-          <Modal onClose={closeLightbox}>
-            <Carousel
-              currentIndex={currentImage}
-              views={modifiedImages.map((x:any, i:number) => ({
-                ...x,
-                srcset: x.srcSet,
-                caption: x.title,
-                key: x.i
-              }))}
-            />
-          </Modal>
-        ) : null}
-      </ModalGateway> */}
     </div>
   );
 }

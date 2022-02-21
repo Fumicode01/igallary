@@ -45,6 +45,7 @@ const Home: NextPage = () => {
             setTimeout(() => {
                 setIsLoading(false);
             },1000)
+            console.log(response.data)
         }
         fetchImages();
     } , [page, searchWord]);
@@ -62,58 +63,28 @@ const Home: NextPage = () => {
         <MainTitle />
         <SearchInput />
         <div className={classes.container}>
-            {/* <Toggle setViewChange={(e:any) => setViewChange(!e.target.checked)}  ref={viewRef} /> */}
             <Toggle onClick={(e:any) => setViewChange(e.target.checked)}  />
-
-            {/* {isLoading 
-                ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
-                : ({viewChange} ?
-                    <>
-                        <ImageGrid images={images} setSelectedImage={setSelectedImage} />
-                        <Pagination 
-                            page={page}
-                            totalPages={totalPages}
-                            handlePagination={handlePages}
-                            />
-                    </>
-                : <>
-                <ImageGallery images={images} setSelectedImage={setSelectedImage} />
-                <Pagination 
-                    page={page}
-                    totalPages={totalPages}
-                    handlePagination={handlePages}
-                    />
-                { selectedImage && (
-                    <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-                )} 
-            </> )} */}
-                {/* {isLoading 
-                ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> 
-                : (
-                    
-                    )} */}
-                    {/* {isLoading ? <BoxLoading className="loading" type="spin" color="#f0a5a0" height={100} width={100} /> : (<></>)} */}
-                    {!viewChange ? 
-                    <>
-                        <ImageGrid images={images} setSelectedImage={setSelectedImage} />
-                        <Pagination 
-                            page={page}
-                            totalPages={totalPages}
-                            handlePagination={handlePages}
-                            />
-                    </>  :
-                    <>
-                        <ImageGallery images={images} setSelectedImage={setSelectedImage} />
-                        <Pagination 
-                            page={page}
-                            totalPages={totalPages}
-                            handlePagination={handlePages}
-                            />
-                        { selectedImage && (
-                            <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
-                        )} 
-                    </>
-                    }
+                {!viewChange ? 
+                <>
+                    <ImageGrid images={images} setSelectedImage={setSelectedImage} />
+                    <Pagination 
+                        page={page}
+                        totalPages={totalPages}
+                        handlePagination={handlePages}
+                        />
+                </>  :
+                <>
+                    <ImageGallery images={images} setSelectedImage={setSelectedImage} />
+                    <Pagination 
+                        page={page}
+                        totalPages={totalPages}
+                        handlePagination={handlePages}
+                        />
+                    { selectedImage && (
+                        <Modal selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                    )} 
+                </>
+                }
         </div>
       </>
   )

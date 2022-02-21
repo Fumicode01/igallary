@@ -2,7 +2,11 @@ import React from 'react'
 
 import styles from './toggle.module.scss'
 
-const Toggle = ({onClick}:any) => {
+interface Props {
+    onClick: (e:any) => void
+}
+
+const Toggle = ({onClick}:Props) => {
     
   return (
       <label className={styles.wrapper}>
