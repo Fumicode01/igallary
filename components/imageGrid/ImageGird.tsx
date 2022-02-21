@@ -15,7 +15,7 @@ const ImageGrid = ({ images }:Props) => {
 
   return (
     <div className={styles.img_grid}>
-      {images && images.map((image:any) => (
+      {images && images.map((image:Image) => (
           <ImageFlip key={image.id} image={image} />
       ))}
     </div>
