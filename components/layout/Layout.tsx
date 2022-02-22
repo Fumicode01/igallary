@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../Header'
-import ConfigContextProvider from '../../context/context'
+import AppContextProvider from '../../context/context'
 import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -8,7 +8,7 @@ export const Layout = (props:any) => {
 
     const queryClient = new QueryClient()
   return (
-      <ConfigContextProvider>
+      <AppContextProvider>
           <QueryClientProvider client={queryClient}>
                 <Head>
                     <title>My Gallary</title>
@@ -17,6 +17,6 @@ export const Layout = (props:any) => {
                 <Header />
                 <main>{props.children}</main>
           </QueryClientProvider>
-      </ConfigContextProvider>
+      </AppContextProvider>
   )
 }

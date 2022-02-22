@@ -9,7 +9,7 @@ import { Modal, Grid, ImageGallery, Pagination, Toggle, MainTitle, SearchInput }
 
 
 import { Image } from '../interfaces/interfaces';
-import { configContext } from '../context/context';
+import { appContext } from '../context/context';
 
 
 
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
     const [viewChange, setViewChange] = useState(false);
 
 
-    const { state } = useContext(configContext);
+    const { state } = useContext(appContext);
     const searchWord = state.searchWord;
 
     useEffect(() => {
@@ -51,7 +51,6 @@ const Home: NextPage = () => {
                 setIsLoading(false)
                 return
             }
-            
             }
         console.log("before => ", viewChange)
         localStorage.getItem("viewChange") === "true" ? setViewChange(true) : setViewChange(false);

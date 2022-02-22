@@ -6,29 +6,23 @@ interface InputProviderProps {
 }
 
 type AppState = typeof initialState;
-type Action = 
-    | { type: "LOADING", payload: boolean }
-    | { type: "SEARCH", payload: string }
-    // | { type: "TOTALPAGE", payload: number };
+type Action =  { type: "SEARCH", payload: string };
 
 
     const initialState = {
-        isLoading: false,
         searchWord: "",
         page:1,
         // totalPages:0,
     }
 
-export const configContext = createContext<{
+export const appContext = createContext<{
     state: AppState;
     dispatch: React.Dispatch<Action>;
 }>({state: initialState, dispatch: () => {}});
 
 
-const configReducer = (state: AppState, action: Action) => {
+const appReducer = (state: AppState, action: Action) => {
     switch(action.type) {
-        case "LOADING":
-            return {...state, isLoading: action.payload};
         case "SEARCH":
             return {...state, searchWord: action.payload};
         // case "TOTALPAGE":
@@ -38,14 +32,14 @@ const configReducer = (state: AppState, action: Action) => {
     }
 }
 
-const ConfigContextProvider = ({ children } : InputProviderProps) => {
-    const [state, dispatch] = useReducer(configReducer, initialState);
+const AppContextProvider = ({ children } : InputProviderProps) => {
+    const [state, dispatch] = useReducer(appReducer, initialState);
 
     return (
-        <configContext.Provider value={{state, dispatch}}>
+        <appContext.Provider value={{state, dispatch}}>
             {children}
-        </configContext.Provider>
+        </appContext.Provider>
     )
 }
 
-export default ConfigContextProvider;
+export default AppContextProvider;

@@ -1,10 +1,10 @@
 import React, { useContext, useRef } from 'react'
 import styles from './searchInput.module.scss'
 
-import { configContext } from '../../context/context'
+import { appContext } from '../../context/context'
 
 export const SearchInput = () => {
-    const { state, dispatch } = useContext(configContext);
+    const { dispatch } = useContext(appContext);
     const input = useRef<HTMLInputElement>(null)
     // const searchWord = state.searchWord;
 
