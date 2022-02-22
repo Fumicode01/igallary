@@ -20,11 +20,11 @@ import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../Icons';
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-        <div className="modal_wrapper">
+        <div className={styles.modal_wrapper}>
             <motion.img src={selectedImage.urls.regular} alt="enlarged pic" 
                 initial={{ y: "-100vh" }}
                 animate={{ y: 0 }}
-                className="modal_image"
+                className={styles.modal_image}
             />
             <ul className={styles.image_info_container}>
                 <li className={styles.author_wrapper}>
