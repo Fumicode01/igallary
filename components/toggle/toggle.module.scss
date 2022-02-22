@@ -1,8 +1,13 @@
+.container {
+    display: flex;
+   justify-content: flex-end;
+}
 .wrapper {
     position: relative;
 
     .input {
         position: absolute;
+        left:45px;
 
         &:checked + span {
             background-color: #f0a5a0;
@@ -22,6 +27,7 @@
         background-color: #bfbfbf;
         position:relative;
         transition: background-color 0.2s;
+        float: right;
 
         &:before{
             content: "";

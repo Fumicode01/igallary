@@ -10,10 +10,13 @@ interface Props {
 export const Toggle = ({onClick, viewChange}:Props) => {
     
   return (
-      <label className={styles.wrapper}>
-          <input className={styles.input} type="checkbox" onChange={()=>onClick(!viewChange)} checked={viewChange}/>
-          <span className={styles.slider}></span>
-      </label>
+      <div className={styles.container}>
+        <label className={styles.wrapper}>
+            <p>Switch View</p>
+            <input className={styles.input} type="checkbox" onChange={()=>onClick(!viewChange)} checked={viewChange}/>
+            <span className={styles.slider}></span>
+        </label>
+      </div>
 
   )
 }
