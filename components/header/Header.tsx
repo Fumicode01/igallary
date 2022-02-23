@@ -1,7 +1,6 @@
 import React from 'react'
 import  Link from 'next/link'
 import Image from 'next/image'
-import logo from '../../public/logo.png'
 
 
 import styles from './header.module.scss'
@@ -11,7 +10,7 @@ export const Header = () => {
       <nav>
             <div className={styles.nav_wrapper}>
                 <a href="/" >
-                    <Image width={90} height={90} src={logo} />
+                    <Image width={90} height={90} src="/logo.png" />
                 </a>
                 <div className={styles.header_right_container}>
                     <ul className={styles.list_container}>
