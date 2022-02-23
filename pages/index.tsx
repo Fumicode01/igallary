@@ -37,7 +37,7 @@ const Home: NextPage = () => {
             setIsLoading(true);
             setError(false)
             try {
-                const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=9`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=9`, config)
+                const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=12`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=12`, config)
                 const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
                 totalPages == 0 ? setTotalPages(Math.ceil(Number(maxItem) / 9)) : setTotalPages(totalPages);
                 searchWord ? setImages(response.data.results) : setImages(response.data);
