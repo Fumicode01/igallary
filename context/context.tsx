@@ -10,7 +10,7 @@ type Action =  { type: "SEARCH", payload: string };
 
 
     const initialState = {
-        searchWord: "",
+        searchTerm: "",
         page:1,
         // totalPages:0,
     }
@@ -24,7 +24,7 @@ export const appContext = createContext<{
 const appReducer = (state: AppState, action: Action) => {
     switch(action.type) {
         case "SEARCH":
-            return {...state, searchWord: action.payload};
+            return {...state, searchTerm: action.payload};
         // case "TOTALPAGE":
         //     return {...state, totalPages: action.payload};
         default:

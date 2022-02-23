@@ -30,17 +30,17 @@ const Home: NextPage = () => {
 
 
     const { state } = useContext(appContext);
-    const searchWord = state.searchWord;
+    const searchTerm = state.searchTerm;
 
     useEffect(() => {
         const fetchImages = async () => {
             setIsLoading(true);
             setError(false)
             try {
-                const response =  searchWord ? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchWord}&per_page=12`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=12`, config)
+                const response =  searchTerm? await axios.get(`https://api.unsplash.com/search/photos?page=${page}&query=${searchTerm}&per_page=12`, config) : await axios.get(`https://api.unsplash.com/photos?page=${page}&per_page=12`, config)
                 const maxItem = parseInt(response.headers.link.split('=')[1].split('&')[0]);
                 totalPages == 0 ? setTotalPages(Math.ceil(Number(maxItem) / 9)) : setTotalPages(totalPages);
-                searchWord ? setImages(response.data.results) : setImages(response.data);
+                searchTerm? setImages(response.data.results) : setImages(response.data);
                 setTimeout(() => {
                     setIsLoading(false);
                 },1000)
@@ -55,11 +55,11 @@ const Home: NextPage = () => {
         console.log("before => ", viewChange)
         localStorage.getItem("viewChange") === "true" ? setViewChange(true) : setViewChange(false);
         fetchImages();
-    } , [page, searchWord]);
+    } , [page, searchTerm]);
 
     useEffect(()=> {
         setPage(1);
-    }, [searchWord])
+    }, [searchTerm])
 
     useEffect(()=> {
         localStorage.setItem("viewChange", viewChange.toString());
