@@ -6,7 +6,6 @@ import { appContext } from '../../context/context'
 export const SearchInput = () => {
     const { dispatch } = useContext(appContext);
     const input = useRef<HTMLInputElement>(null)
-    // const searchWord = state.searchWord;
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -23,7 +22,6 @@ export const SearchInput = () => {
                     <input type="text" placeholder="Search..." ref={input} role="input" />
                     <div className={styles.search}></div>
                 </div>
-                {/* <input type="text" placeholder="Search..." ref={input} /> */}
             </form>
         </section>
   )

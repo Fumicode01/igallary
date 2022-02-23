@@ -172,8 +172,9 @@
     }
   }
 
-  .img {
+  .img_wrapper {
     margin: auto 0;
+    overflow: hidden;
     border-radius: 50%;
     height: 200px;
     width: 200px;

@@ -9,9 +9,9 @@ export const Header = () => {
   return (
       <nav>
             <div className={styles.nav_wrapper}>
-                <a href="/" >
+                <Link href="/" >
                     <Image width={90} height={90} src="/logo.png" />
-                </a>
+                </Link>
                 <div className={styles.header_right_container}>
                     <ul className={styles.list_container}>
                         <li>
