@@ -1,4 +1,4 @@
-export * from './Header'
+// export * from './Header'
 export * from './Icons'
 export * from './ImageFlip'
 export * from './Grid'
