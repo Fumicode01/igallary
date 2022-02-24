@@ -2,7 +2,7 @@ import React from 'react'
 import  Link from 'next/link'
 import Image from 'next/image'
 
-import styles from './Header.module.scss'
+import styles from './header.module.scss'
 
 export const Header = () => {
   return (

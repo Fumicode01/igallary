@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './Toggle.module.scss'
+import styles from './toggle.module.scss'
 
 interface Props {
     onClick: (e:any) => void

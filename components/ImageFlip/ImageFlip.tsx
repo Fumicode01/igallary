@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import ReactCardFlip from 'react-card-flip';
 import { motion } from 'framer-motion';
-import styles from './ImageFlip.module.scss'
+import styles from './imageFlip.module.scss'
 import { Image } from '../../interfaces/interfaces';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
