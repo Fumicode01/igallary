@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './mainTitle.module.scss'
+import classes from './MainTitle.module.scss'
 
 export const MainTitle = () => {
   return (

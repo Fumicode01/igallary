@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ImageGrid.module.scss';
+import styles from './Grid.module.scss'
 
 import { Image } from '../../interfaces/interfaces';
 import { ImageFlip } from '../ImageFlip';

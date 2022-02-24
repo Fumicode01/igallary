@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import styles from './pagination.module.scss';
+import styles from './Pagination.module.scss';
 
 export interface Props {
   page: number;

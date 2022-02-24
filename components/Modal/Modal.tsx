@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styles from './modal.module.scss';
+import styles from './Modal.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeartIcon, faTwitterIcon, faInstagramIcon } from '../Icons';
