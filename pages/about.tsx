@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/about.module.scss'
+import styles from '../styles/About.module.scss'
 import Image from 'next/image'
 
 const About = () => {
