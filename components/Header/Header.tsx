@@ -2,7 +2,6 @@ import React from 'react'
 import  Link from 'next/link'
 import Image from 'next/image'
 
-
 import styles from './Header.module.scss'
 
 export const Header = () => {
